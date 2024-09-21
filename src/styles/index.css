@@ -1,0 +1,113 @@
+@import url(https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "DM Sans", sans-serif;
+  /* background-color: #fafafa; */
+}
+/*    Navbar   */
+.menu-container {
+  background-color: #24262b;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  z-index: 100;
+  margin-top: 10px;
+}
+.menu-container.open {
+  opacity: 1;
+  transform: translateX(0);
+}
+.menu-container.closed {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+/* Add the sticky class to make the header sticky */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 4;
+  transition: background-color 0.3s ease;
+}
+/* Add the animation class when scrolling down */
+.header.scrolled {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeInDown 0.5s ease;
+  z-index: 100;
+}
+
+.active-link {
+  color: #0d775e !important;
+}
+/* Keyframes for fadeInDown animation */
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Up Down animation effect  */
+.vert-move {
+  animation: mover 1s infinite alternate ease-in-out;
+}
+.horiz-move {
+  animation: mover-horizontal 1s infinite alternate ease-in-out;
+}
+
+@keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes mover-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+.regsiter .content {
+  position: relative;
+}
+.regsiter .content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40vh;
+  background-image: url("../../public/images/common/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
